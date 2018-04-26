@@ -74,7 +74,24 @@ public class DialView extends View {
         mDialPaint.setColor(Color.GRAY);
 
         mActiveSelection = 0;
-        //TODO: Set up onClick listener for this view.
+
+        // Set up onClick listener for this view.
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActiveSelection = (mActiveSelection + 1) % SELECTION_COUNT;
+
+                if(mActiveSelection >=1) {
+                    mDialPaint.setColor(Color.GREEN);
+
+                } else {
+                    mDialPaint.setColor(Color.GRAY);
+                }
+                invalidate();
+
+            }
+        });
+
     }
 
     private float[] computeXYForPosition(final int pos, final float radius) {
